@@ -539,7 +539,43 @@
                                 <img class="img-responsive img-centered" src="img/portfolio/transformation-small.jpg" alt="">
                                 <p> JSTL is a model to model transformation engine that handle JSMF models. JSTL simplifies the transformation writing while leaving some responsibilities to the transformation developer following JavaScript way of thinking (e.g., the developer has to check for concurrent rules).</p>
                                 <p>In JSTL one can define a model transformation using two patterns: in/out. The in pattern is a function that matches input model elements. The out pattern can generate multiple modelling elements. JSTL is an embbeded DSL which mean that it takes benefits from the Javascript (functions) which can be used as helpers. Moreover JSTL can be used directly in Javascript programs that manipulates JSMF models.</p>
-								<p> One simple example is used to transform two related model elements of type A and B into element C and D.
+								<p> One simple example is used to transform two related model elements that conforms to  A and B into elements that conforms to C and D following the figure presented here. We present below the two transformations rules, that can be launch whilst specifying input and outputmodels.
+
+								<pre><code>
+//First Rule C->D
+var trule2 = {                                     
+
+//Filters from the input model all the element that conforms to class C of Metamodel MM
+    in : function(inputModel) {                      
+        return inputModel.Filter(MM.C);
+    },
+
+//Create elements that conform to class D with id of C becoming a "num" of class D.
+    out : function(inp) {
+        var d = MM.D.newInstance();                
+        d.num = inp.id;                           
+        return [d];
+    }
+}
+
+//Rule with relations
+var transformation1  = { //ATL <=> rule transformation1 {
+
+    in : function(inputModel) { //ATL <=> from inputModel :
+            return (                                //not present in ATL... embbed
+                _.reject(inputModel.Filter(MM.A),   //ATL <=> MM!A(in->select
+                    {name:'titi'})                  //(e | e.name!='titi')
+            );
+    },
+
+    out : function(inp) {                           //ATL <=> to (withtout any ref to output elements)
+            var b = MM.B.newInstance('');           // <=> o : MM!B //here we call newInstance explicitly.. should be hidden
+            b.nameB = inp.name+'_transfo';        //ATL <=> nameB <= inp.name+'transfo'
+            this.assign(b, 'toD', inp.toC); // ATL <=> b.toD <- inp.toC
+            return [b];
+    }
+}
+</code></pre>
 								</p>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                            <!-- </div> -->
