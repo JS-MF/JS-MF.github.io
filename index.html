@@ -511,12 +511,24 @@
 const JSMF = require('jsmf-core')
 , Class = JSMF.Class
 , Model = JSMF.Model
-									
+
 var Person = Class.newInstance('Person');
 Person.addAttribute("name",String);
 Person.addAttribute("age",Number);
+						
+var Family = Class.newInstance('Family');
+Family.addAttribute('familyName',String);
+Family.addReference('familyMember',Person,-1);
 
 var me = Person.newInstance({name:'me',age:1});
+var myFamily = Family.newInstance({name:'myName'});
+myFamily.familyMember=me;
+
+//display the person in myFamily
+console.log(myFamily.familyMember);
+
+//display the class me is conform to: Person
+console.log(me.conformsTo());
 								</script>
 								</p>       
 								             
