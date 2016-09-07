@@ -505,35 +505,42 @@
                                 <p class="item-intro text-muted"></p>
                                 <img class="img-responsive img-centered" src="img/portfolio/modelling-large.jpg" alt="">
 								<a href="https://github.com/JS-MF/jsmf-core">JSMF core source code</a>
-                                <p>The JavaScript Modelling Framework (JSMF) has been designed for providing a flexible modelling environment that could support the requirement of natural modelling [1]. It is a JavaScript embedded DSL inspired by the Eclipse Modelling Framework (EMF) in its basic functions but that rely on JavaScript dynamic typing and on a relative independence between a metamodel and a model.</p>
+                                <p>The JavaScript Modelling Framework (JSMF) has been designed for providing a flexible modelling environment [1] that could support the requirement of natural modelling [2]. It is a JavaScript embedded DSL inspired by the Eclipse Modelling Framework (EMF) in its basic functions but that rely on JavaScript dynamic typing and on a relative independence between a metamodel and a model.</p>
 								<p id="my-test">
 								<script>
 const JSMF = require('jsmf-core')
 , Class = JSMF.Class
 , Model = JSMF.Model
 
+//Create a Class Person with attributes name and age.
 var Person = Class.newInstance('Person');
 Person.addAttribute("name",String);
 Person.addAttribute("age",Number);
-						
+					
+//Create a Class Family with attribute familyName and a reference to a set of elements
+//conform to Person Class.	
 var Family = Class.newInstance('Family');
 Family.addAttribute('familyName',String);
 Family.addReference('familyMember',Person,-1);
 
+//Create new model element me (conforms to Person) and my Family
+//conforms to Family.
 var me = Person.newInstance({name:'me',age:1});
 var myFamily = Family.newInstance({name:'myName'});
 myFamily.familyMember=me;
 
-//display the person in myFamily
+//display the array of persons in myFamily
 console.log(myFamily.familyMember);
 
 //display the class me is conform to: Person
-console.log(me.conformsTo());
+me.conformsTo();
 								</script>
 								</p>       
 								             
                                <ul class="list-inline">
-                                    <li>[1] Z Zarwin, M Bjekovic, JM Favre, JS Sottet, HA Proper, Natural Modelling, Journal Of Object Technologies, 2014
+									<li>[1] 2016
+									</li>  
+                                    <li>[2] Z Zarwin, M Bjekovic, JM Favre, JS Sottet, HA Proper, Natural Modelling, Journal Of Object Technologies, 2014
 									</li>                       
                                </ul> 
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
