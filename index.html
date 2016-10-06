@@ -511,7 +511,8 @@
                                 <p class="item-intro text-muted"></p>
                                 <img class="img-responsive img-centered" src="img/portfolio/modelling-large.jpg" alt="">
 								<a href="https://github.com/JS-MF/jsmf-core">JSMF core source code</a>
-                                <p>The JavaScript Modelling Framework (JSMF) has been designed for providing a flexible modelling environment [1] that could support the requirement of natural modelling [2]. It is a JavaScript embedded DSL inspired by the Eclipse Modelling Framework (EMF) in its basic functions but that rely on JavaScript dynamic typing and on a relative independence between a metamodel and a model.</p>
+                                <p>The JavaScript Modelling Framework (JSMF) has been designed for providing a flexible modelling environment [1] that could support the requirement of natural modelling [2]. It is a JavaScript embedded DSL inspired by the Eclipse Modelling Framework (EMF) in its basic functions but that rely on JavaScript dynamic typing and on a relative independence between a metamodel and a model.
+								</p>
 								<p id="my-test">
 								<script>
 const JSMF = require('jsmf-core')
@@ -542,7 +543,10 @@ console.log(myFamily.familyMember);
 me.conformsTo();
 								</script>
 								</p>       
-								             
+								<p>
+Because of its integration in Web technologies it is quit straighforward to provide visualisation of JSMF models.
+<img class="img-responsive img-centered" src="img/View.png" alt="">
+								</p>             
                                <ul class="list-inline">
 									<li>[1] J.S. Sottet, N. Biri, JSMF: a flexible JavaScript Modelling Framework, FlexMDE workshop organized at MODELS, 2016
 									</li>  
@@ -643,8 +647,12 @@ var transformation1  = {
                                 <h2>Managing Heterogeneous Models and MDE artifacts</h2>
                                 <p class="item-intro text-muted"></p>
                                 <img class="img-responsive img-centered" src="img/portfolio/modelmanagement-small.png" alt="">
-                                <p>Model management is key when dealing with a multi-perspective, multi-stakeholder models of systems. It encompasses all the tools necessary for ensuring consistency, being able to classify, relating the different modelling artifacts (i.e., model, metamodels, transformation, modelling elements, etc.). </p>
+                                <p>Model management is key when dealing with a multi-perspective, multi-stakeholder models of systems. It encompasses all the tools necessary for ensuring consistency, being able to classify, relating the different modelling artifacts (i.e., model, metamodels, transformation, modelling elements, etc.). Moreover, it is intended to be used for impact analysis over modelling artifacts (e.g., risk propagation) belongings to different models. </p>
 								<p>As first entities model elements can be use to describe any components of the managed models: i.e., it uses models elements to describe, models, metamodels, viewpoints, transformations, etc.
+								</p>
+								<p> 
+A typical graph of interconnected modelling elements (as persisted in Neo4J DB). Here describing the relationships and elements of a risk analysis (impacts, vulnerabilites and mitigations) for a medical laboratory- it comes from three different models (some expressed in ArchiMate, Excel, etc.).
+<img class="img-responsive img-centered" src="img/portfolio/ThreatAssessment_node_3.png" alt="">
 								</p>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
 								<p> Pictures by <a href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
